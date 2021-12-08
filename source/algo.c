@@ -86,26 +86,3 @@ void sort_big_stack(t_stacks *stacks)
         i--;
     }
 }
-
-void sort_low_stack(t_stacks *stacks)
-{
-    int i;
-    int j;
-    int tmp_a;
-
-    i = 0;
-    tmp_a = *stacks->size_a;
-    while (i < tmp_a)
-    {
-        j = 0;
-        while (j < tmp_a)
-        {
-            if((*stacks->a)[0] > (*stacks->a)[1])
-                swap_a(stacks, 0);
-            else
-                rotate_a(stacks, 0);
-            j++;
-        }
-        i++;
-    }
-}

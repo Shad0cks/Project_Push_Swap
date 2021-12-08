@@ -5,11 +5,14 @@ SOURCES_FILES	=	main.c \
 					op1.c \
 					op2.c \
 					op3.c \
-					debug.c \
+					sort_high.c \
 					realloc.c \
 					algo.c \
 					binary_conv.c \
-					sort_small.c
+					sort_small.c \
+					error_checks.c \
+					error_checksp2.c \
+					set_values.c
 
 SOURCES_DIR		=	source
 
