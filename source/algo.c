@@ -45,25 +45,6 @@ void symplify(int **a_cp, int **a, int size_a)
 }
 
 
-// int is_sort(int *a, int size_a, int realsize)
-// {
-//     int i;
-
-//     i = 0;
-//     if(size_a != realsize)
-//         return (0);
-//     while (i < realsize)
-//     {
-//         if(i + 1 != realsize && a[i] > a[i + 1])
-//         {
-//             printf("retry \n");
-//             return (0);
-//         }
-//         i++;
-//     }
-//     return (1);
-// }
-
 int have_nb(t_stacks *stacks, int i)
 {
     int j;
@@ -108,5 +89,23 @@ void sort_big_stack(t_stacks *stacks)
 
 void sort_low_stack(t_stacks *stacks)
 {
-    debug_pile(stacks);
+    int i;
+    int j;
+    int tmp_a;
+
+    i = 0;
+    tmp_a = *stacks->size_a;
+    while (i < tmp_a)
+    {
+        j = 0;
+        while (j < tmp_a)
+        {
+            if((*stacks->a)[0] > (*stacks->a)[1])
+                swap_a(stacks, 0);
+            else
+                rotate_a(stacks, 0);
+            j++;
+        }
+        i++;
+    }
 }

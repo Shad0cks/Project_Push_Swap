@@ -34,7 +34,7 @@ void reverse_rotate_b(t_stacks *stacks, int mute);
 void rev_rot_all(t_stacks *stacks);
 
 void sort_big_stack(t_stacks *stacks);
-void sort_low_stack(t_stacks *stacks);
+void    solve_5_or_less(t_stacks *stacks);
 
 void sort(int **a_cp, int size_a);
 void symplify(int **a_cp, int **a, int size_a);
@@ -43,5 +43,6 @@ char **a_conv_bin(int *a, int size_a, int size_max);
 void copy_int(int **dest, int **src, int size);
 void refresh_bin(t_stacks *stacks);
 int size_max(int *a, int size_a);
+
 
 #endif

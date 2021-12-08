@@ -8,7 +8,8 @@ SOURCES_FILES	=	main.c \
 					debug.c \
 					realloc.c \
 					algo.c \
-					binary_conv.c
+					binary_conv.c \
+					sort_small.c
 
 SOURCES_DIR		=	source
 
