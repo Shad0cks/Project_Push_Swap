@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pdeshaye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/10 05:18:24 by pdeshaye          #+#    #+#             */
+/*   Updated: 2021/12/10 05:18:25 by pdeshaye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header.h"
 
-static void		solve_2(t_stacks *stacks)
+static void	solve_2(t_stacks *stacks)
 {
 	if ((*stacks->a)[0] > (*stacks->a)[1])
 		swap_a(stacks, 0);
 }
 
-static void		solve_3(t_stacks *stacks)
+static void	solve_3(t_stacks *stacks)
 {
-	int max;
-	int i;
+	int	max;
+	int	i;
 
 	max = (*stacks->a)[0];
 	i = 0;
@@ -19,22 +31,21 @@ static void		solve_3(t_stacks *stacks)
 			max = (*stacks->a)[i];
 		i++;
 	}
-
 	if ((*stacks->a)[0] == max)
 	{
 		rotate_a(stacks, 0);
 		solve_2(stacks);
-		return;
+		return ;
 	}
 	while ((*stacks->a)[*stacks->size_a - 1] != max)
-			reverse_rotate_a(stacks, 0);
+		reverse_rotate_a(stacks, 0);
 	solve_2(stacks);
 }
 
-static void		solve_4(t_stacks *stacks, int min)
+static void	solve_4(t_stacks *stacks, int min)
 {
-	int median;
-	int i;
+	int	median;
+	int	i;
 
 	i = 0;
 	median = (*stacks->size_a - 1) / 2;
@@ -47,7 +58,7 @@ static void		solve_4(t_stacks *stacks, int min)
 			push_b(stacks);
 			solve_3(stacks);
 			push_a(stacks);
-			return;
+			return ;
 		}
 		i++;
 	}
@@ -58,10 +69,10 @@ static void		solve_4(t_stacks *stacks, int min)
 	push_a(stacks);
 }
 
-static void		solve_5(t_stacks *stacks)
+static void	solve_5(t_stacks *stacks)
 {
-	int median;
-	int i;
+	int	median;
+	int	i;
 
 	i = 0;
 	median = (*stacks->size_a - 1) / 2;
@@ -74,7 +85,7 @@ static void		solve_5(t_stacks *stacks)
 			push_b(stacks);
 			solve_4(stacks, 1);
 			push_a(stacks);
-			return;
+			return ;
 		}
 		i++;
 	}
@@ -85,7 +96,7 @@ static void		solve_5(t_stacks *stacks)
 	push_a(stacks);
 }
 
-void			solve_5_or_less(t_stacks *stacks)
+void	solve_5_or_less(t_stacks *stacks)
 {
 	if (*stacks->size_a == 2)
 		swap_a(stacks, 0);
