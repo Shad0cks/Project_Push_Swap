@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checksp2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdeshaye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdeshaye <pdeshaye@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 05:08:23 by pdeshaye          #+#    #+#             */
-/*   Updated: 2021/12/10 05:08:56 by pdeshaye         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:11:07 by pdeshaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	error_double(int **pile, int pile_size)
 	}
 }
 
-void	check_error_part2(int **a, int size_a)
+void	check_error_part2(t_stacks_init *init)
 {
-	error_double(a, size_a);
-	if (is_sort(*a, size_a) == 1)
+	error_double(&init->a, init->size_a);
+	if (is_sort(init->a, init->size_a) == 1)
 	{
-		free(*a);
+		free(init->a);
 		exit(0);
 	}
 }

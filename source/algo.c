@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdeshaye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdeshaye <pdeshaye@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 05:02:17 by pdeshaye          #+#    #+#             */
-/*   Updated: 2021/12/10 05:03:35 by pdeshaye         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:30:11 by pdeshaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
+
+void	refresh_bin(t_stacks *stacks)
+{
+	if (*stacks->size_a > 0 && *stacks->a_bin != NULL)
+	{
+		del_a_bin(*stacks->a_bin);
+		*stacks->a_bin = a_conv_bin(*stacks->a,
+				*stacks->size_a, stacks->size_max);
+	}
+	else if (*stacks->size_a > 0 && *stacks->a_bin == NULL)
+		*stacks->a_bin = a_conv_bin(*stacks->a,
+				*stacks->size_a, stacks->size_max);
+	if (*stacks->size_b > 0 && *stacks->b_bin != NULL)
+	{
+		del_a_bin(*stacks->b_bin);
+		*stacks->b_bin = a_conv_bin(*stacks->b,
+				*stacks->size_b, stacks->size_max);
+	}
+	else if (*stacks->size_b > 0 && *stacks->b_bin == NULL)
+		*stacks->b_bin = a_conv_bin(*stacks->b,
+				*stacks->size_b, stacks->size_max);
+}
 
 void	sort(int **a_cp, int size_a)
 {

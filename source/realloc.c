@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   realloc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdeshaye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdeshaye <pdeshaye@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 05:15:49 by pdeshaye          #+#    #+#             */
-/*   Updated: 2021/12/10 05:16:10 by pdeshaye         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:31:00 by pdeshaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,17 @@ int	*ft_realloc_add(int *pile, int new_size)
 	free(pile);
 	pile = NULL;
 	return (new_pile);
+}
+
+int	int_count(int nb)
+{
+	int	count;
+
+	count = 0;
+	while (nb / 10)
+	{
+		count++;
+		nb /= 10;
+	}
+	return (count + 1);
 }

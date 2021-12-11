@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   binary_conv.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdeshaye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdeshaye <pdeshaye@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 05:04:04 by pdeshaye          #+#    #+#             */
-/*   Updated: 2021/12/10 05:05:40 by pdeshaye         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:28:37 by pdeshaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,18 +94,4 @@ char	**a_conv_bin(int *a, int size_a, int size_max)
 	}
 	a_bin[i] = NULL;
 	return (a_bin);
-}
-
-void	del_a_bin(char **a_bin)
-{
-	int	i;
-
-	i = 0;
-	while (a_bin[i])
-	{
-		free(a_bin[i]);
-		i++;
-	}
-	free(a_bin);
-	a_bin = NULL;
 }

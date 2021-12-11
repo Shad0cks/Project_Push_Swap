@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdeshaye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdeshaye <pdeshaye@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 05:06:24 by pdeshaye          #+#    #+#             */
-/*   Updated: 2021/12/10 05:07:55 by pdeshaye         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:14:29 by pdeshaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int	error_notnbs(char *argv[], int argc)
 	return (0);
 }
 
-void	check_error_part1(char *argv[], int argc, int **a, int *size_a)
+void	check_error_part1(char *argv[], int argc, t_stacks_init *init)
 {
 	if (argc == 1)
 	{
@@ -106,7 +106,7 @@ void	check_error_part1(char *argv[], int argc, int **a, int *size_a)
 			ft_putstr_fd("Error\n", 2);
 			exit(-1);
 		}
-		*a = get_pile_string(argv[1], size_a);
+		init->a = get_pile_string(argv[1], &init->size_a);
 	}
 	else
 	{
@@ -116,6 +116,6 @@ void	check_error_part1(char *argv[], int argc, int **a, int *size_a)
 			ft_putstr_fd("Error\n", 2);
 			exit(-1);
 		}
-		*a = get_pile(argv, size_a, argc);
+		init->a = get_pile(argv, &init->size_a, argc);
 	}
 }

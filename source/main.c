@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pdeshaye <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pdeshaye <pdeshaye@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 05:09:17 by pdeshaye          #+#    #+#             */
-/*   Updated: 2021/12/10 05:12:25 by pdeshaye         ###   ########.fr       */
+/*   Updated: 2021/12/11 16:30:53 by pdeshaye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/header.h"
-
-int	int_count(int nb)
-{
-	int	count;
-
-	count = 0;
-	while (nb / 10)
-	{
-		count++;
-		nb /= 10;
-	}
-	return (count + 1);
-}
 
 int	check_nb(int nb, char *strnb)
 {
@@ -65,8 +52,8 @@ int	*get_pile_string(char *nbs, int *size_a)
 	pile_int = malloc(sizeof(int) * i);
 	if (pile_int == NULL)
 		exit(-1);
-	i = 0;
-	while (split_nbs[i])
+	i = -1;
+	while (split_nbs[++i])
 	{
 		pile_int[i] = ft_atoi(split_nbs[i]);
 		if (check_nb(pile_int[i], split_nbs[i]) == 1)
@@ -76,7 +63,6 @@ int	*get_pile_string(char *nbs, int *size_a)
 			exit(-1);
 		}
 		*size_a += 1;
-		i++;
 	}
 	del_a_bin(split_nbs);
 	return (pile_int);
@@ -121,51 +107,24 @@ void	copy_int(int **dest, int **src, int size)
 	}
 }
 
-void	refresh_bin(t_stacks *stacks)
-{
-	if (*stacks->size_a > 0 && *stacks->a_bin != NULL)
-	{
-		del_a_bin(*stacks->a_bin);
-		*stacks->a_bin = a_conv_bin(*stacks->a,
-				*stacks->size_a, stacks->size_max);
-	}
-	else if (*stacks->size_a > 0 && *stacks->a_bin == NULL)
-		*stacks->a_bin = a_conv_bin(*stacks->a,
-				*stacks->size_a, stacks->size_max);
-	if (*stacks->size_b > 0 && *stacks->b_bin != NULL)
-	{
-		del_a_bin(*stacks->b_bin);
-		*stacks->b_bin = a_conv_bin(*stacks->b,
-				*stacks->size_b, stacks->size_max);
-	}
-	else if (*stacks->size_b > 0 && *stacks->b_bin == NULL)
-		*stacks->b_bin = a_conv_bin(*stacks->b,
-				*stacks->size_b, stacks->size_max);
-}
-
 int	main(int argc, char *argv[])
 {
-	t_stacks	stacks;
-	int			*a;
-	int			*a_cp;
-	int			*b;
-	char		**a_bin;
-	char		**b_bin;
-	int			size_a;
-	int			size_b;
+	t_stacks		stacks;
+	t_stacks_init	stacks_init;
+	int				*a_cp;
 
-	b = NULL;
-	a_bin = NULL;
-	b_bin = NULL;
-	size_a = 0;
-	size_b = 0;
+	stacks_init.b = NULL;
+	stacks_init.a = NULL;
+	stacks_init.a_bin = NULL;
+	stacks_init.b_bin = NULL;
+	stacks_init.size_a = 0;
+	stacks_init.size_b = 0;
 	a_cp = NULL;
-	check_error_part1(argv, argc, &a, &size_a);
-	check_error_part2(&a, size_a);
-	pre_algo(&a_cp, &a, size_a);
-	set_stackp1(&stacks, &a, &b, &size_a);
-	set_stackp2(&stacks, &a_bin, &b_bin, &size_b);
+	check_error_part1(argv, argc, &stacks_init);
+	check_error_part2(&stacks_init);
+	pre_algo(&a_cp, &stacks_init);
+	set_stackp1(&stacks, &stacks_init);
 	sort_high(&stacks);
-	free_all(a_bin, b_bin, &stacks);
+	free_all(&stacks_init, &stacks);
 	return (0);
 }
